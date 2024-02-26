@@ -1,4 +1,21 @@
-const service = require("../service/index");
+const service = require("../service/contact");
+
+const addContact = async (req, res, next) => {
+  const { name, email, phone } = req.body;
+  const owner = req.user._id
+  try {
+    const result = await service.createContact({ name, email, phone, owner });
+
+    res.status(201).json({
+      status: "success",
+      code: 201,
+      data: { contact: result },
+    });
+  } catch (e) {
+    console.error(e);
+    next(e);
+  }
+};
 
 const getContacts = async (req, res, next) => {
   try {
@@ -65,22 +82,6 @@ const removeContact = async (req, res, next) => {
   }
 };
 
-const addContact = async (req, res, next) => {
-  const { name, email, phone } = req.body;
-  try {
-    const result = await service.createContact({ name, email, phone });
-
-    res.status(201).json({
-      status: "success",
-      code: 201,
-      data: { contact: result },
-    });
-  } catch (e) {
-    console.error(e);
-    next(e);
-  }
-};
-
 const updateContact = async (req, res, next) => {
   const { id } = req.params;
   const { name, email, phone } = req.body;
@@ -139,10 +140,10 @@ const updateContactStatus = async (req, res, next) => {
 };
 
 module.exports = {
+  addContact,
   getContacts,
   getContactById,
   removeContact,
-  addContact,
   updateContact,
   updateContactStatus,
 };
