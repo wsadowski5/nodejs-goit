@@ -10,17 +10,25 @@ const findUser = ({ email }) => {
   return User.findOne({ email });
 };
 
-const findUserByToken = ({ verificationToke }) => {
-  return User.findOne({ verificationToke });
+const findUserByToken = ({ verificationToken }) => {
+  return User.findOne({ verificationToken });
 };
 
 const updateToken = ({ email, token }) => {
   return User.findOneAndUpdate({ email }, { $set: { token } });
 };
 
-const verifyUser = ({ id } ) => {
-  return User.findByIdAndUpdate({ _id: id }, { verificationToken : null, verify:true });
-}
+const verifyUser = (userId) => {
+  return User.findByIdAndUpdate(userId, {
+    $set: {
+      verify: true,
+      verificationToken: null,
+    },
+  });
+};
+
+
+
 const findUserByID = ({ id }) => {
   return User.findByIdAndUpdate({ _id: id }, { token: null });
 };

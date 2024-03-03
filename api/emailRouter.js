@@ -5,7 +5,7 @@ const routerEmail = express.Router();
 
 
 
-routerEmail.post("/verify/", sendVerifyEmail)
-routerEmail.get("/verify/:verificationToken", verifyEmail)
+routerEmail.post("/users/verify/", sendVerifyEmail)
+routerEmail.get("/users/verify/:verificationToken", verifyEmail)
 
 module.exports = routerEmail

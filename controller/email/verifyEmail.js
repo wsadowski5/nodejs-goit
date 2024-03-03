@@ -8,7 +8,7 @@ const verifyEmail = async (req, res) => {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       } else {
-        await verifyUser(user.id);
+        await verifyUser(user._id);
         res.status(200).json({ message: "Verification successful" });
       }
     } catch (error) {
