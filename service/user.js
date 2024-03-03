@@ -28,7 +28,6 @@ const verifyUser = (userId) => {
 };
 
 
-
 const findUserByID = ({ id }) => {
   return User.findByIdAndUpdate({ _id: id }, { token: null });
 };

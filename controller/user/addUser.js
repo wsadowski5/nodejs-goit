@@ -1,7 +1,7 @@
 const { createUser, findUser } = require("../../service/user");
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
-const { sendVerifyEmail } = require("../../controller/email/sendVerifyEmail");
+const { sendVerifyEmail } = require("../../service/email")
 
 const addUser = async (req, res, next) => {
   const { password, email, avatarURL } = req.body;

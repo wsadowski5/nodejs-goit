@@ -53,5 +53,17 @@ const userValidation = Joi.object({
     }),
 });
 
+
+const emailValidation = Joi.object({
+
+
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "pl"] } })
+    .required(),
+
+
+});
+
 module.exports.contactValid = validateData(contactValidation);
 module.exports.userValid = validateData(userValidation);
+module.exports.emailValid = validateData(emailValidation);
