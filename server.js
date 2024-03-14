@@ -1,7 +1,7 @@
 const app = require("./app");
 
 const mongoose = require("mongoose");
-const DB_URL = process.env.DB_HOST;
+const DB_URL = "mongodb+srv://wsadowski5:konik12qw@cluster0.wmoty6x.mongodb.net/db-contacts"
 
 const dbConnection = async () => {
   try {
